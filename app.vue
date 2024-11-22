@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const { data, pending, error } = await useAsyncData("posts", () =>
-    $fetch("https://jsonplaceholder.typicode.com/posts")
-);
+const { data, pending, error, refresh } = await useFetch('/api/posts')
 </script>
 
 <template>
