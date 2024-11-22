@@ -3,8 +3,9 @@ interface Post {
     id: number;
     title: string;
     body: string;
+    addInfo: string;
 }
-const { data, pending, error, refresh } = await useFetch<Post[]>("/api/posts");
+const { data, status, error, refresh } = await useFetch<Post[]>("/api/posts");
 </script>
 
 <template>
@@ -14,9 +15,9 @@ const { data, pending, error, refresh } = await useFetch<Post[]>("/api/posts");
             <li v-for="post in data" :key="post.id">
                 <h3>{{ post.title }}</h3>
                 <p>{{ post.body }}</p>
+                <b>{{ post.addInfo }}</b>
             </li>
         </ul>
-        <div v-else-if="pending">Đang tải dữ liệu...</div>
-        <div v-else>Có lỗi xảy ra khi tải dữ liệu.</div>
+        <div v-else-if="error">Lỗi khi tải dữ liệu</div>
     </div>
 </template>
