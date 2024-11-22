@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { data, pending, error, refresh } = await useFetch('/api/posts')
+interface Post {
+    id: number;
+    title: string;
+    body: string;
+}
+const { data, pending, error, refresh } = await useFetch<Post[]>("/api/posts");
 </script>
 
 <template>
